@@ -1,0 +1,8 @@
+#ci 단계에서는 config. 서버로의 접속을 차단
+# ci에서의 임시 리눅스는 오직 해당 어플리케이션 만 떠 있으므로
+spring:
+  config:
+    import: ""
+  cloud:
+    config:
+      enabled: false
