@@ -1,4 +1,4 @@
-name: mm-config-server CI
+name: mm-eureka-server CI
 
 on:
   push:
@@ -19,13 +19,13 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SERVICE_NAME: mm-config-server
+      SERVICE_NAME: mm-eureka-server
       GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs=-Xmx2g"
 
       # 이미지
       IMAGE_REGISTRY: ghcr.io
       IMAGE_OWNER: ${{ github.repository_owner }}
-      IMAGE_NAME: mm-config-server
+      IMAGE_NAME: mm-eureka-server
       IMAGE_TAG: ${{ github.sha }}
 
     steps:
@@ -61,7 +61,7 @@ jobs:
         with:
           registry: ${{ env.IMAGE_REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.CR_PAT }}
 
       - name: Build OCI image with Buildpacks
         if: github.event_name == 'push'
