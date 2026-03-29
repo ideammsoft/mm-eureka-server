@@ -3,4 +3,7 @@ spring:
   application:
     name: mm-eureka-server
 
+#Config 서버를 통해 정보를 가져오기
+  config:
+    import: "optional:configserver:http://mm-config-server:1881"
 
